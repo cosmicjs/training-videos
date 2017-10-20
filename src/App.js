@@ -2,21 +2,21 @@ import React, { Component } from 'react'
 import { Menu, Message } from 'semantic-ui-react'
 import Videos from './partials/videos'
 import AddVideo from './partials/add-video'
-import { getParameterByName } from './helpers'
 
 export default class App extends Component {
   
   state = { activeItem: 'Videos' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
+  goTo = (where) => this.setState({ activeItem: where })
+  showMessage = () => this.setState({ ...this.state, show_message: true })
   render() {
     const { activeItem } = this.state
     return (
       <div style={{ margin: 20 }}>
         <h1>Training Videos</h1>
         {
-          getParameterByName('message') &&
+          this.state.show_message &&
           <Message success>Video added!</Message>
         }
         <Menu tabular>
@@ -25,11 +25,11 @@ export default class App extends Component {
         </Menu>
         {
           activeItem === 'Videos' &&
-          <Videos />
+          <Videos goTo={this.goTo}/>
         }
         {
           activeItem === 'Add Video' &&
-          <AddVideo />
+          <AddVideo goTo={this.goTo} showMessage={this.showMessage}/>
         }
       </div>
     )

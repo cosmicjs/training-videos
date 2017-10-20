@@ -14,7 +14,8 @@ export default class App extends Component {
     	}
     }
     Cosmic.addObject(config, params, (err, res) => {
-    	window.location.href = window.location.href + '&message=video-added'
+    	this.props.goTo('Videos')
+      this.props.showMessage('video-added')
     })
   }
   render() {
