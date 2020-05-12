@@ -11,7 +11,8 @@ export default class App extends Component {
     	type_slug: config.type_slug,
     	options: {
     		content_editor: 0
-    	}
+      },
+      write_key: config.bucket.write_key
     }
     Cosmic.addObject(config, params, (err, res) => {
     	this.props.goTo('Videos')

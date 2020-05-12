@@ -28,7 +28,7 @@ export default class App extends Component {
       		this.state.videos.map(video => {
       			return (
       				<div style={{ marginBottom: 60 }}>
-	      				<h2>{ video.title }&nbsp;&nbsp;&nbsp;<a style={{ fontSize: '12px' }} target="_parent" href={`https://cosmicjs.com/${config.bucket.slug}/edit-object/${video.slug}`}>Edit</a></h2>
+	      				<h2>{ video.title }&nbsp;&nbsp;&nbsp;<a style={{ fontSize: '12px' }} target="_parent" href={`https://app.cosmicjs.com/${config.bucket.slug}/edit-object/${video._id}`}>Edit</a></h2>
 	      				<div style={{ marginBottom: 20 }}>{ video.metadata.video_text }</div>
 	      				<iframe width="560" height="315" src={`https://www.youtube.com/embed/${getYouTubeID(video.metafield.youtube_video_url.value)}`} frameborder="0" allowfullscreen></iframe>
 	      			</div>
